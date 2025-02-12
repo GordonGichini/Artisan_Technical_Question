@@ -1,0 +1,14 @@
+<h1><%= @book.title %></h1>
+<p><strong>Author:</strong> <%= @book.author %></p>
+<p><strong>ISBN:</strong> <%= @book.isbn %></p>
+<p><strong>Status:</strong> <%= @book.available? ? 'Available' : 'Borrowed' %></p>
+
+<% if @book.available? %>
+  <%= form_with url: borrow_book_path(@book), method: :post do %>
+    <%= submit_tag "Borrow this book" %>
+  <% end %>
+<% else %>
+  <p>This book is currently borrowed.</p>
+<% end %>
+
+<%= link_to 'Back to list', books_path %>
