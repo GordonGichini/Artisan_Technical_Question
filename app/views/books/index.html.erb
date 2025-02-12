@@ -1,28 +1,32 @@
-<h1>Books</h1>
+<div class="mt-5">
+  <h1 class="mb-4">Books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>ISBN</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @books.each do |book| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to book.title, book_path(book) %></td>
-        <td><%= book.author %></td>
-        <td><%= book.isbn %></td>
-        <td>
-          <% if book.available? %>
-            Available
-          <% else %>
-            Borrowed
-          <% end %>
-        </td>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to book.title, book_path(book), class: 'text-decoration-none' %>
+          </td>
+          <td><%= book.author %></td>
+          <td><%= book.isbn %></td>
+          <td>
+            <% if book.available? %>
+              <span class="badge bg-success">Available</span>
+            <% else %>
+              <span class="badge bg-danger">Borrowed</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
