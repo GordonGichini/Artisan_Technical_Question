@@ -9,14 +9,14 @@ class Borrowing < ApplicationRecord
   before_create :mark_book_unavailable
 
   # When a borrowing is updated to returned, mark the book as available again
-  before_update :mark_book_unavailable, if: :returned_changed_to_true?
+  before_update :mark_book_available, if: :returned_changed_to_true?
 
   validates :due_date, presence: true 
 
   private 
 
   def set_due_date
-    self.due_date || 2.weeks.from_now.to_date 
+    self.due_date ||= 2.weeks.from_now.to_date 
   end
 
   def mark_book_unavailable

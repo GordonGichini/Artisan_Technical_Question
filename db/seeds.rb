@@ -5,7 +5,7 @@ require 'faker'
         title: Faker::Book.title,
         author: Faker::Book.author,
         isbn: Faker::Number.number(digits: 10),
-        available: [true, false].sample
+        available: true
     )
 end
 

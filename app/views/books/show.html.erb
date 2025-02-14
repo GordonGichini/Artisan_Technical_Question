@@ -1,30 +1,37 @@
-<div class="mt-5">
-  <div class="card">
-    <div class="card-header">
-      <h1><%= @book.title %></h1>
-    </div>
-    <div class="card-body">
-      <p><strong>Author:</strong> <%= @book.author %></p>
-      <p><strong>ISBN:</strong> <%= @book.isbn %></p>
-      <p>
-        <strong>Status:</strong>
-        <% if @book.available? %>
-          <span class="badge bg-success">Available</span>
-        <% else %>
-          <span class="badge bg-danger">Borrowed</span>
-        <% end %>
-      </p>
-
+<div class="card mt-5">
+  <div class="card-header">
+    <h1><%= @book.title %></h1>
+  </div>
+  <div class="card-body">
+    <p><strong>Author:</strong> <%= @book.author %></p>
+    <p><strong>ISBN:</strong> <%= @book.isbn %></p>
+    <p>
+      <strong>Status:</strong>
+      <% if @book.available? %>
+        <span class="badge bg-success">Available</span>
+      <% else %>
+        <span class="badge bg-danger">Borrowed</span>
+      <% end %>
+    </p>
+    
+    <% if logged_in? %>
       <% if @book.available? %>
         <%= form_with url: borrow_book_path(@book), method: :post, local: true do %>
           <%= submit_tag "Borrow this book", class: "btn btn-primary" %>
         <% end %>
+      <% elsif current_user.borrowings.where(book: @book, returned: false).exists? %>
+        <p class="mt-2">You have borrowed this book.</p>
+        <%= form_with url: return_borrowing_path(current_user.borrowings.find_by(book: @book, returned: false)), method: :patch, local: true do %>
+          <%= submit_tag "Return this book", class: "btn btn-warning" %>
+        <% end %>
       <% else %>
-        <p class="text-muted">This book is currently borrowed.</p>
+        <p class="mt-2">This book is currently borrowed.</p>
       <% end %>
-    </div>
-    <div class="card-footer">
-      <%= link_to 'Back to list', books_path, class: "btn btn-secondary" %>
-    </div>
+    <% else %>
+      <p class="mt-2">Please log in to borrow this book.</p>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Back to list', books_path, class: "btn btn-secondary" %>
   </div>
 </div>

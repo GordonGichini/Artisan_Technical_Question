@@ -15,9 +15,28 @@
         <a class="navbar-brand" href="<%= root_path %>">BookLendingApp</a>
       </div>
     </nav>
+
+    <!-- FLASH MESSAGES -->
+    <div class="container mt-3">
+      <% flash.each do |key, message| %>
+        <%# Map the Rails flash type to a Bootstrap alert class %>
+        <% alert_class = case key.to_sym
+          when :notice then 'alert-success'
+          when :alert  then 'alert-danger'
+          else 'alert-info'
+        end %>
+
+        <div class="alert <%= alert_class %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </div>
+
     <div class="container">
       <%= yield %>
     </div>
+
     <!-- Include the Webpacker JavaScript pack -->
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </body>
