@@ -37,9 +37,9 @@ A simple Rails 8 application for borrowing and returning books. Users can sign u
        yarn install --check-files
 
 3. **Set Up the Database**
-    ```Update config/database.yml with your      PostgreSQL credentials if needed.
-    Create and migrate the database:
-    bash
+    -Update config/database.yml with your      -PostgreSQL credentials if needed.
+    -Create and migrate the database:
+    ```bash
     Copy
     Edit
      ```rails db:create
@@ -58,15 +58,15 @@ A simple Rails 8 application for borrowing and returning books. Users can sign u
        Visit http://localhost:3000 in your browser.
 
 ***Usage***
-```Sign Up: Go to /users/new to create a new user account.
-   Log In: Go to /login to sign in.
-   Browse Books: Visit /books to see a list of all books. Each book shows if it’s Available or Borrowed.
-  Borrow a Book: Click on a book’s title to view its details, then click Borrow this book (if available).
-  Return a Book: Visit your profile page (e.g., /users/1) to see all books you’ve borrowed, then click Return Book next to each borrowed book.
+-Sign Up: Go to /users/new to create a new user account.
+-Log In: Go to /login to sign in.
+-Browse Books: Visit /books to see a list of all books. Each book shows if it’s Available or Borrowed.
+-Borrow a Book: Click on a book’s title to view its details, then click Borrow this book (if available).
+-Return a Book: Visit your profile page (e.g., /users/1) to see all books you’ve borrowed, then click Return Book next to each borrowed book.
 ***Testing***
-  ```This project uses Rails’ default testing framework (MiniTest):
+-This project uses Rails’ default testing framework (MiniTest):
 
-bash
+```bash
 Copy
 Edit
 rails test
@@ -80,7 +80,7 @@ For deploying to a production environment (like Heroku):
 
 Add a Production Database in config/database.yml (or use environment variables).
 Precompile assets:
-bash
+```bash
 Copy
 Edit
 rails assets:precompile
@@ -90,8 +90,8 @@ Copy
 Edit
 rails db:migrate RAILS_ENV=production
 Start the server (or follow your hosting provider’s instructions).
-Project Structure
-pgsql
+***Project Structure***
+```pgsql
 Copy
 Edit
 book-lending-app
@@ -134,10 +134,10 @@ book-lending-app
 │   └── test_helper.rb
 ├── Gemfile
 └── README.md
-Contributing
+# Contributing
 Contributions are welcome! To contribute:
 
-Fork this repo.
+```Fork this repo.
 Create a new feature branch (git checkout -b feature/my-feature).
 Commit your changes (git commit -m 'Add some feature').
 Push to the branch (git push origin feature/my-feature).
@@ -145,11 +145,11 @@ Create a new Pull Request.
 License
 This project is licensed under the MIT License (or whichever license you prefer).
 
-Acknowledgments
-Rails Guides for excellent documentation.
+***Acknowledgments***
+```Rails Guides for excellent documentation.
 Faker for generating fake data in development.
 The open-source community for providing the gems and libraries that power this project.
 Copy
-Edit
+Edit```
 
 
