@@ -6,29 +6,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-          integrity="sha384-9ndCyUa6mY5Pp6Qf2pvK1J0cc4A76WS5a1+PeHRqD6yLZP8zF9F3c9kTtF0K0Gm7" crossorigin="anonymous">
-
-    <!-- CSS (if any) -->
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+    <!-- Use only the Webpacker stylesheet pack -->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   </head>
-
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
       <div class="container">
         <a class="navbar-brand" href="<%= root_path %>">BookLendingApp</a>
-        <!-- You can add nav items here -->
       </div>
     </nav>
-
     <div class="container">
       <%= yield %>
     </div>
-
-    <!-- Bootstrap JS  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoNYm1gyIka1Qk1WuD6G6bBiB6QDhg0P5+Wf6EG5E6tBt2T" crossorigin="anonymous"></script>
+    <!-- Include the Webpacker JavaScript pack -->
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </body>
 </html>
