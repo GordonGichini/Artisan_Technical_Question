@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = User.find(params[:id])
         # List currently borrowed (not yet returned) books
         @borrowings = @user.borrowings.where(returned: false)
     end
